@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    
+    <script>
+        $(document).ready(function () {
+            
+    
+            function displayInfo() {
+                $inputs.each(function() {
+                    $("div#target").append(this.name + ' - ' +$(this).val())
+
+                });
+                return false;
+            }
+
+            $("input[type=text]").blur(function(){
+                val = $(this).val();
+                id = $(this).attr('id');
+                $("div#target").append("You entered " + val + " in " + id + "<br>");
+            });
+
+            $("input#reqdelivery").click(function() {
+                id = $(this).attr('id');
+                checkedstatus = '';
+                if($(this).is(":checked"))  {
+                    checkedstatus = 'checked';
+                    if($('input[name=delivery]:checked').val()=='n'){
+                        $('input[name=delivery][value=h]').prop("checked", true);
+                    }
+                } else {
+                    checkedstatus = 'unchecked';
+                    $('input[name=delivery][value=n]').prop("checked", true);
+                }
+
+                $("div#target").append("You " + checkedstatus + " " + id + "<br>");
+            });
+
+            $("input[type=radio]").click(function() {
+                name = $(this).attr('name');
+                val = $(this).val();
+
+                var deliveryType = $('input[name=delivery]:checked').val();
+                var info;
+                if (deliveryType == 'h') {
+                    info = 'Home';
+                    $('input#reqdelivery').prop('checked', true);
+                }
+                if (deliveryType == 's') {
+                    info = 'Store';
+                    $('input#reqdelivery').prop('checked', true);
+                }
+                if (deliveryType == 'n') {
+                    info = 'None';
+                    $('input#reqdelivery').prop('checked', false);
+                }
+ 
+                $("div#target").append("You selected a  " + name + " type of " + info + "<br>");
+            });
+
+            
+
+            
+        })
+        function incNum() {
+            let num = parseInt($('#qty').val());
+            $('#qty').val(num + 1);
+            return false;
+        }
+
+        function decNum() {
+            let num = parseInt($('#qty').val());
+            $('#qty').val(num - 1);
+        }
+        
+        
+    </script>
+
+</head>
+<body>
+    <h1>Example page</h1>
+    
+    <form onsubmit="return displayInfo(); ">
+        <p>Enter the name of the product you want to buy: <input type="text" id="productName"/></p>
+        <p>
+            Enter the quantity you want to buy: <input type="number" id="qty" value="1"/>
+            <button type="button" onclick="incNum()">+</button>
+            <button type="button" onclick="decNum()">-</button>
+        </p>
+        <p>Do you require delivery? <input type="checkbox" id="reqdelivery" value="y" /></p>
+        Delivery Type
+        <input type="radio" name="delivery" value="h">Home Delivery
+        <input type="radio" name="delivery" value="s">Store Delivery
+        <input type="radio" name="delivery" value="n" checked>None
+        <p><input type="button" value="Place order" /></p>
+    </form>
+
+    <div id="target">
+
+    </div>
+</body>
+</html>

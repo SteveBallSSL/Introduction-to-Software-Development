@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+   
+        // Variable declaration – global, const
+        function scopeDemo() {
+     	
+            glob = 100;        // becomes global when the function is called
+            const VAT = 0.2;   // local scope and value cannot change
+        
+            // … some code
+        
+          //  VAT = 0.15;	     // uncaught TypeError: Assignment to constant variable.
+           
+        }
+        scopeDemo();
+      //  console.log(glob);	// 100 did not work
+
+     //   console.log(VAT); 	  //   Uncaught ReferenceError: VAT is not defined
+
+
+        //Variable declaration – var, let
+        function scopeDemo2() {
+
+            var p = 10;	// function scope
+            let q = 2; 			// local scope (see for loop)
+       
+            for (let i = 0; i < 5; i++) { 	// scope of i is within the for loop
+             var total = q * p + i;	// following lines have access to total
+            }
+            console.log(total);
+         //   console.log(i);     	 //  Uncaught ReferenceError: i is not defined
+       }
+       scopeDemo2();
+    //   console.log(p); 	   //  Uncaught ReferenceError: p is not defined
+    //   console.log(q); 	   //  Uncaught ReferenceError: q is not defined
+       //Recommendations
+        //1- use const if value should not be change
+        //2- use let to limit scope
+        //3- do not use global variables!
+
+       
+        document.write("<br>----------------------------------------<br>");
+        function showTheDay() {
+            const days = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 				    'Thursday', 'Friday', 'Saturday' ];
+    
+            let x = new Date().getDay();
+            document.write("<h3>Today is " + days[x] + "</h3>");
+        }
+    
+        showTheDay();
+    
+        document.write("----------------------------------------<br />");
+
+        
+
+        function incNumbers(nos){
+            for (var i = 0; i < nos.length; i++) {
+                nos[i]++;
+            }
+        }
+        let numbers = [1,2,3,4,5];
+        incNumbers(numbers);
+        console.log(numbers);
+    </script>
+</body>
+</html>

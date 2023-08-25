@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // version 1
+        showPerson = function (person) {
+            alert(person.firstName + " is " + person.age + " years old");
+        }
+        
+        person1 = { firstName: "Bob", surname: "Smith" };
+        person1.age = 42;
+
+        showPerson(person1);
+
+        // version 2
+        person1 = {
+            firstName: "Bob",
+            surname: "Smith",
+            showAge: function () {
+                alert(`${this.firstName} is ${this.age} years old`);
+            }
+        };
+        
+        person1.age = 25;
+        person1.showAge();
+
+        // version 3
+        // Example of adding methods afterwards
+        person1.showFullName = function () {
+            alert(`${this.firstName} ${this.surname}`);
+        }
+
+        person1.showFullName(person1);
+
+        // Class
+        class Employee {
+
+            constructor(name) {
+                this.name = name;
+            }
+        
+            doWork() {
+                alert(this.name + " is working");
+            }
+        }
+
+        var p = new Employee("Steve");
+        p.doWork();
+
+        //Converting an Object to JSON string
+        var names = ["Bob", "Ken", "Linda"];
+        let data = JSON.stringify(names);
+        alert(data);
+
+        let person = { firstName: "Bob", surname: "Smith", age:21 }
+        let data2 = JSON.stringify(person);
+        alert(data2);
+
+        let data3 = `[
+        { "value": "New",   "onclick": "CreateNewDoc()" },
+        { "value": "Open",  "onclick": "OpenDoc()"      },
+        { "value": "Close", "onclick": "CloseDoc()"     }
+        ]`;
+
+        let menus = JSON.parse(data3);
+
+
+        for (var i = 0; i < menus.length; i++) {
+
+            console.log(menus[i].value);
+        }
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

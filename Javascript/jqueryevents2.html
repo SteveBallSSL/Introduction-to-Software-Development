@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        $(function () {
+            $('#image1').mousemove(function (e) {
+                var X = e.pageX - $(this).offset().left;
+                var Y = e.pageY - $(this).offset().top;
+                $("#div1").html(X + "," + Y);
+            });
+            $('#image1').mouseenter(function (e) {
+                alert('Mouse over image detected')
+            });
+            $('#image1').mouseout(function (e) {
+                alert('Mouse leaving the image detected')
+            });
+        });
+
+   </script>
+   
+</head>
+<body>
+    <div id="div1">move mouse over the image</div>
+    <img id="image1" src="https://img.posterlounge.co.uk/images/l/1698693.jpg" alt="Team image" />
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+        table {
+            display: inline-block; 
+            height: 200px;
+            width: 40% !important; 
+            overflow: auto; 
+        }
+        table#customers tr:hover {
+            background-color: aqua;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+    <script>
+        var myCustomersModule = angular.module("myCustomersModule", []);
+        var myCustomersController = function ($scope, $http) {
+            $http({
+                method: "Get", url: 'https://mikescustomers.glitch.me/customers'
+            }).then(function (response) {
+                $scope.customers = response.data;
+            }, function (reason) {
+                $scope.error = "Unable to show customers data";
+            });
+
+            $scope.showOrders = function (id) {
+                $http({
+                    method: "Get", url: 'https://mikescustomers.glitch.me/orders/'+id
+                }).then(function (response) {
+                    $scope.orders = response.data;
+                }, function (reason) {
+                    $scope.error = "Unable to show orders data";
+                });
+            }
+
+
+        }
+
+        myCustomersModule.controller("myCustomersController", myCustomersController);
+
+    </script>
+</head>
+<body>
+    <body ng-app="myCustomersModule" ng-controller="myCustomersController">
+        <h1>Customer Orders</h1>
+            <table id="customers" class='table table-striped'>
+                <thead>
+                    <th>Customer ID</th>
+                    <th>Contact Name</th>
+                    <th>City</th>
+                </thead>
+                <tr ng-repeat="cus in customers" ng-click="showOrders(cus.CustomerID)">
+                    <td>{{cus.CustomerID}}</td>
+                    <td>{{cus.ContactName}}</td>
+                    <td>{{cus.City}}</td>
+                </tr>
+            </table>
+            <table ng-hide="orders == null" class='table table-striped'>
+                <thead>
+                    <th>Customer ID</th>
+                    <th>Order ID</th>
+                    <th>Employee ID</th>
+                    <th>Ship Country</th>
+                    <th>Freight</th>
+                </thead>
+                <tr ng-repeat="order in orders">
+                    <td>{{order.CustomerID}}</td>
+                    <td>{{order.OrderID}}</td>
+                    <td>{{order.EmployeeID}}</td>
+                    <td>{{order.ShipCountry}}</td>
+                    <td>{{order.Freight}}</td>
+                </tr>
+            </table>
+  
+        
+    </body>
+</body>
+</html>

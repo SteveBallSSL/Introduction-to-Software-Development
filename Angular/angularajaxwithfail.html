@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+    <script>
+        var myModule = angular.module("myModule", []);
+        var myController = function ($scope, $http) {
+            $scope.doClick = function () {
+                $http({
+                    method: "Get", url: 'https://mikescustomers.glitch.me/customersa '
+                }).then(function (response) {
+                    $scope.customers = response.data;
+                }, function (reason) {
+                    $scope.error = "Unable to get the data";
+                    console.log(reason.status + ',' + reason.statusText);
+                });
+           }
+      
+        }
+        myModule.controller("myController", myController);
+
+    </script>
+</head>
+<body>
+    <body ng-app="myModule" ng-controller="myController">
+        <button ng-click="doClick()">Get Customers</button>
+        <table>
+            <tr ng-repeat="cus in customers">
+                <td>{{cus.ContactName}}</td>
+                <td>{{cus.City}}</td>
+            </tr>
+        </table>
+    </body>
+</body>
+</html>

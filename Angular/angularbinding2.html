@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+        <script>
+            var myModule = angular.module("myModule", []);
+            var myController = function ($scope) {
+                $scope.message = "Hello World!";
+                $scope.student = { name: 'Peter', age: 18 };
+            }
+            myModule.controller("myController", myController);
+        </script>
+    </head>
+    
+    <body ng-app="myModule" ng-controller="myController">
+        <div>{{ message }}</div>
+        Name:<div>{{student.name}}</div>
+        Age:<div>{{student.age}}</div>
+    </body>
+  
+
+</html>

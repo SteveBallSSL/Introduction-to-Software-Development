@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+    <script>
+        var myModule = angular.module("myModule", []);
+        var myController = function ($scope) {
+
+            $scope.doClick = function () {
+                alert("clicked");
+            }
+
+        }
+        myModule.controller("myController", myController);
+
+    </script>
+</head>
+<body ng-app="myModule" ng-controller="myController">
+    <button ng-click="doClick()">Save</button>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <style>
+        .invalid {
+            background-color: red;
+        }
+    </style>
+    <script>
+        $(function () {
+
+            $('input').keypress(function (e) {
+                if (!$.isNumeric(e.key))  
+                {   
+                    $(this).addClass("invalid");
+                    $('#warning').html("You can only use numerical characters.");                    
+                    return false;
+         
+                } else {
+                    $(this).removeClass("invalid");
+                }
+            });
+
+            $('input#age').blur(function (e) {
+                 if ($(this).val() < 18)  {
+                    $("input#qty").attr({
+                        "max" : 5
+                    });
+                } else {
+                    $("input#qty").attr({
+                        "max" : null
+                    });
+                }
+            });    
+
+            $('input').blur(function (e) {
+                if ($('#qty').val() < $('#qty').attr('max'))  {
+                    if($('#qty').val() ) {
+                        $('#qty').addClass("invalid");
+                        $('#warning').html("Under 18's can only order a maximum of 5");
+                    }
+
+                } else {
+                    $('#qty').removeClass("invalid");
+                    $('#warning').html("");
+
+                }
+            });
+
+            $('#clear').click(function (e) {
+                $('input').removeClass("invalid");
+                $('#warning').html("");
+           })
+        });
+    </script>
+
+</head>
+<body>
+    Age: <input type="text" name="Age" id="age" value="">
+    Quantity: <input type="numeric" name="Quantity" id="qty">
+    <div id="warning"></div>
+    <div><button id='clear'>Clear</button></div>
+</body>
+</html>

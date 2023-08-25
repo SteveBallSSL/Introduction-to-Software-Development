@@ -1,0 +1,16 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+    <script> angular.module('module1', []).controller(
+                'controller1', function ($scope) { 
+                    $scope.message = "Simple: Good Morning 😊!"; 
+                }); 
+    </script>
+</head>
+
+<body ng-app="module1" ng-controller="controller1">
+    <h1>{{message}}</h1>
+</body>
+
+</html>

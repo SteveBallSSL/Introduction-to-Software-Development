@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+    <script>
+        angular.module("myapp", [])
+            .controller("MyController", function($scope) {
+                $scope.save = {};
+                $scope.map = {};
+
+                $scope.save.doClick = function() {
+                    alert("clicked");
+                }
+
+                $scope.map.doClick = function (event) {
+                    alert("clicked at X and Y of:" + 
+                        event.clientX + "," + event.clientY);
+                }
+            });
+
+    </script>
+    </head>
+    <body>
+        <div ng-app="myapp" ng-controller="MyController">
+           <div ng-click="save.doClick()">Save</div>
+           <div ng-click="map.doClick($event)">Map of the World</div>
+          </div>
+      </body>
+      
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <style>
+        #names div {
+            background-color: #00dcff;
+            width:20%;
+            border-style:solid;
+            border-width:1px;
+            border-color:black;
+        }
+    </style>
+
+    <script>
+        function addName() {
+            var name = $("#getName").val();
+            $("<div>").text(name).appendTo("#names");
+            $("#names div:odd").css("background-color", "yellow");
+
+            return false;
+        }
+    </script>
+</head>
+<body>
+    
+
+    <form onSubmit="return addName();">
+        <input type="text" name="n" id="getName">
+        <input type="submit" value="Add">
+    </form>
+
+    <div id="names">
+        <ul></ul>
+    </div>
+</body>
+</html>

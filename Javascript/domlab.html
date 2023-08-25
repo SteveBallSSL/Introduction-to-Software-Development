@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+        .bigNumber {
+            color:red !important;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="names">
+    </div>
+
+    <script>
+        function getNames() {
+            var names = ["Steve", "Bob", "John"];
+            var ages = [51, 41, 31];
+
+            var result = '';
+            for (var i = 0; i < names.length; i++) {
+                result += "<p>" + names[i] + " is " + ages[i] + " years old.</p>";
+            }
+            document.getElementById('names').innerHTML = result;
+        }
+
+        function highlightBigNumbers() {
+            tds = document.getElementsByClassName("td-ele");
+            for (var item = 0; item < tds.length; item++) {
+                if (parseInt(tds[item].innerText) > 10) {
+                    tds[item].className += tds[item].className ? " bigNumber" : "bigNumber";
+                    tds[item].style.backgroundColor = "yellow";
+                }
+            }
+        }
+
+        function multiplytable(){
+            var table = "<table class='table table-striped'>";
+            for (var row = 0; row < 10; row++) {
+                table += "<tr>";
+                for (var column = 0; column < 10; column++) {
+                    table += "<td class='td-ele'>" + row * column + "</td>";
+                }
+                table += "</tr>";
+            }
+            table += "</table>"
+            document.write(table);
+        }
+
+        getNames();
+        multiplytable();
+        highlightBigNumbers();
+    </script>
+
+    <p>The full URL of this document is: <br><span id="demo"></span>.</p>
+
+<script>
+document.getElementById("demo").innerHTML = document.URL
+</script>
+</body>
+</html>

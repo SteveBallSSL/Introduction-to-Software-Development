@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function show() {
+            document.getElementById("eventslab").style.display = 'block';
+        }
+        
+        function hide() {
+            document.getElementById("eventslab").style.display = 'none';
+        }
+
+        function showhide(event) {
+            switch (event) {
+                case 'show':
+                    eventdisplay = "block";
+                    break;
+                default:
+                    eventdisplay = "none";
+                    break;
+            }
+            document.getElementById("eventslab").style.display = eventdisplay;
+        }
+        
+    </script>
+    
+</head>
+<body onload="document.getElementById('eventslab').style.color='blue'">
+    <div id="eventslab">
+        This is the events lab div
+    </div>
+
+    <button onclick="show()">Show</button>
+    <button onclick="hide()">Hide</button>
+    <hr>
+    <button onclick="showhide('show')">Show Div</button>
+    <button onclick="showhide('hide')">Hide Div</button>
+    <br>
+    <noscript>No Javascript no worky!</noscript>
+</body>
+</html>

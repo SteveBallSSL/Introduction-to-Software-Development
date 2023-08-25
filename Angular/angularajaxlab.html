@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+    <script src="JS/ajax.js"></script>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="myController">
+        <div ng-hide="customers == null">
+            <h1>Customer Orders</h1>
+            <table id="customers" class='table table-striped'>
+                <thead>
+                    <th>Customer ID</th>
+                    <th>Contact Name</th>
+                    <th>City</th>
+                </thead>
+                <tr ng-repeat="cus in customers">
+                    <td>{{cus.CustomerID}}</td>
+                    <td>{{cus.ContactName}}</td>
+                    <td>{{cus.City}}</td>
+                </tr>
+            </table>
+        </div>
+        
+        <input type="button" value="Load data" ng-click="getCustomers()"/>
+        <div id="loading" ng-show="customers == null">
+            Loading....
+        </div>
+    </div>
+    
+
+</body>
+</html>

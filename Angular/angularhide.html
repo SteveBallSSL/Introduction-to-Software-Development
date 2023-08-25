@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+    <script>
+        var myModule = angular.module("myModule", []);
+        var myController = function ($scope, $http) {
+            $http({
+                method: "Get", url: 'https://mikescustomers.glitch.me/customerz'
+            }).then(function (response) {
+                $scope.customers = response.data;
+            }, function (reason) {
+                $scope.error = "Unable to show customers data";
+            });
+
+        }
+        myModule.controller("myController", myController);
+
+    </script>
+</head>
+<body ng-app="myModule" ng-controller="myController">
+    <h3 ng-hide="customers == null">QA Customers</h3>
+    <div ng-hide="error == null">{{error}}</div>
+    <table>
+        <tr ng-repeat="cus in customers">
+            <td>{{cus.ContactName}}</td><td>{{cus.City}}</td>
+        </tr>
+    </table>
+</body>
+
+</html>

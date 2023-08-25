@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="text/JavaScript">
+
+        function valDrink(theForm)  {
+            if (theForm.drink[2].checked &&
+                (theForm.milk.checked || theForm.sugar.checked)) {
+        
+                alert("You can't have milk or sugar with soup!");
+                    return false; 	// Problem
+        } else {
+            return true; 	// OK    
+        }
+
+    </script>
+    
+</head>
+<body>
+    <form method="get" action="serve.asp" onsubmit="return valDrink(this)">
+        <input type="radio" checked name="drink" value="t" />Tea
+        <input type="radio" name="drink" value="c" />Coffee
+        <input type="radio" name="drink" value="s" />Soup
+
+        <input type="checkbox" name="milk" value="y" />Milk
+        <input type="checkbox" name="sugar" value="y" />Sugar
+
+        <input type="submit" value="Vend" />
+
+    </form>
+
+</body>
+</html>

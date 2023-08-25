@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img scr="" id="poster" /> 
+    <script> fetch("http://www.omdbapi.com/?apikey=ef5e4257&s=fear") 
+        .then(res => { 
+            return res.json(); 
+        }).then(data => { 
+            display(data) 
+        }); 
+        function display(data) { 
+            alert(data.Search[0].Title); 
+            document.getElementById('poster').src = data.Search[0].Poster; 
+        } 
+    </script>
+</body>
+</html>

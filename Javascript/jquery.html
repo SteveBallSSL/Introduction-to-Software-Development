@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            demo();
+        });
+
+        function demo() {
+            $('#divInfo').html('The best is yet to come');
+            $('.spring').css('color','green');
+
+            $('p').html('There is no present like time');
+
+            $('p[name=sales]').html('Sales report of the day');
+
+
+            $('h1, p').css('color', 'blue');
+
+        }
+
+        function incAge() {
+            let age = parseInt($('#txtAge').val());
+
+            $('#txtAge').val(age + 1);
+        }
+
+
+        function Register() {
+            var info = 'You are ';
+            var staffType = $('input[name=category]:checked').val();
+
+            if (staffType == 'c') info += 'Is a contractor';
+            if (staffType == 'p') info += 'Is a permanent member of staff';
+            alert(info);
+        }
+
+        function Register2() {
+            var info = "Index is: " + $("#options option:selected").index() +
+                " text is " + $("#options option:selected").text();
+            alert(info);
+        }
+
+
+    </script>
+
+</head>
+<body>
+    <h1>Example page</h1>
+    
+    <div id="divInfo">Notes</div>
+    <div class="spring">Spring is coming</div>
+    <div class="spring">very soon!</div>
+    <p></p>
+    <p></p>
+    <p name="sales"></p>
+
+
+    <h1>The Project</h1>
+
+    Name:<input type="text" id="txtName" />
+    Age: <input type="number" id="txtAge" />
+
+    <button onclick="incAge()">Increase age</button>
+
+    <hr>
+    <form onsubmit="Register()">
+        <input type="radio" name="category" value="c">Contractor
+        <input type="radio" name="category" value="p" checked>Permanent
+        <input type="submit" value="submit" />
+    </form>
+
+    <hr>
+    <form onsubmit="Register2()">
+        <select id="options">
+            <option>option-1</option>
+            <option>option-2</option>
+            <option>option-3</option>
+        </select>
+        <input type="submit" value="submit" />
+    </form>
+
+</body>
+</html>

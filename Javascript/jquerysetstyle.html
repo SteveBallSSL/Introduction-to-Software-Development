@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .transform30 {
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            transform: rotate(30deg);
+        }
+        .redBorder {
+            border:1px dashed red;
+        }
+    
+    </style>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+   
+        
+            var myStyle = { 
+                color: 'Red', 
+                'font-size': '14pt',
+                position: 'absolute',
+                left: '100px', 
+                top: '100px',
+                'transform': 'rotate(60deg)'
+            };
+            
+            $("#div1").css(myStyle);
+
+            $('#divQA').addClass('transform30');
+
+            if (  $('#divQA').hasClass('transform30') ) 
+            { 
+                $('#divQA').removeClass('transform30');
+            }
+
+        });
+        function validate() {
+            $("#qa").toggleClass("redBorder");
+        }
+
+    </script>
+</head>
+<body>
+    <div id="div1">div 1</div>
+    <div id="divQA">Welcome to QA</div>
+    <hr>
+    <div id="qa">QA Training Ltd.</div>
+    <button onclick="validate()">validate</button>
+
+
+</body>
+</html>

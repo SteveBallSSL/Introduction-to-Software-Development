@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+    <script>
+        var myModule = angular.module("myModule", []);
+        var myController = function ($scope) {
+            $scope.students = [
+                { name: "Jon", course: "Finance" }, { name: "Sasha", course: "Marketing"},
+                { name: "Sean", course: "Planning" }, { name: "Chris", course: "Networking"}];
+
+            $scope.doClick = function (student) {
+                alert(student.name + "\n" + student.course);
+            }
+        }
+        myModule.controller("myController", myController);
+
+    </script>
+</head>
+<body ng-app="myModule" ng-controller="myController">
+    <table>
+        <tr ng-repeat="stu in students" ng-click="doClick(stu)">
+            <td>{{stu.name}}</td>
+            <td>{{stu.course}}</td>
+        </tr>
+    </table>
+</body>
+
+</html>

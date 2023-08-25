@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        $(function () {
+
+            $("#div1").click(function (e) {
+                alert($(e.target).attr('id') + " clicked showing in div1");
+            });
+            $("#div2").click(function (e) {
+                alert($(e.target).attr('id') + " clicked showing in div2");
+            });
+            $("p").click(function (e) {
+                alert($(e.target).attr('id') + " clicked");
+            });
+        });
+
+
+   </script>
+   
+</head>
+<body>
+    <div id="div1">
+        Outer div1
+        <div id="div2">
+            inner div2
+            <p id="p1">Click here first (Paragraph in div2)</p>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        function addName() {
+            target = "div#names ul";
+            elements = target+" li";
+            elementlast = elements+":last";
+            newname = $("input#getName").val();
+
+            $(target).append('<li>'+newname + '</li>');
+
+            if ($(elements).length % 2 == 0) {
+                $(elementlast).css('background-color', '#00dcff');
+            }
+            return false;
+        }
+    </script>
+</head>
+<body>
+    
+
+    <form onSubmit="return addName();">
+        <input type="text" name="n" id="getName">
+        <input type="submit" value="Add">
+    </form>
+
+    <div id="names">
+        <ul></ul>
+    </div>
+</body>
+</html>

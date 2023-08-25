@@ -1,0 +1,113 @@
+<html>
+    <head>
+        <title>QA</title>
+        <style>
+            .hello {
+                border: 3px solid red;
+            }
+
+            .bold {
+                font-weight: bolder;
+            }
+
+            .bluebg {
+                background-color: blue; 
+                color: aliceblue;
+            }
+
+            #divInfo {
+                font-size: xx-large;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>QA Training</h1>
+        <p>Some text</p>
+        <p>Some text</p>
+        <p>Some text</p>
+        <p>Some text</p>
+        <hr />
+        <div id="hello">Hello world</div>
+        <div id="divInfo">Another div</div>
+       
+        <script>
+        
+            let div1 = document.getElementById("hello"); 
+            div1.innerHTML = "Hello QA Apprenticeships";
+
+            div1.className = "hello";
+            div1.style.backgroundColor = "yellow";
+
+            div1.classList.add("hello");
+            div1.classList.add("bold");
+
+
+            let allParas = document.getElementsByTagName("p");
+            for(var i = 0, all = allParas.length; i < all; i++){   
+                allParas[i].classList.add('bluebg');
+            }
+
+            let para3 = allParas[3]; 
+            para3.classList.add("bold", "hello");
+
+           let allDivs = document.getElementsByTagName("div");
+           let div2 = allDivs[0]; 
+           let div3 = allDivs["hello"]; 
+           let div4 = allDivs[1];
+
+    
+        
+        </script>
+
+        <ol id="names"></ol>
+
+    <script>
+        students = ["Bayley", "Joshua", "Robert", "Joanna", "Paul", "Calum"];
+
+        let olNames = document.getElementById('names');
+
+        students.forEach(stu => {
+            let li = document.createElement('li');
+            li.innerHTML = stu;
+            olNames.appendChild(li);
+        });
+    </script>
+
+    <div id="divNames"></div>
+    <script>
+        students = ["Bayley", "Joshua", "Robert", "Joanna", "Paul", "Calum"];
+
+        let selNames = document.createElement('select');
+
+        students.forEach(stu => {
+            let option = document.createElement('option');
+            option.innerHTML = stu;
+            selNames.appendChild(option);
+        });
+
+        document.getElementById('divNames').appendChild(selNames);
+
+</script>
+
+    name1: <input type="text" id="stuName">
+    name1: <input type="text" name="qa" class="bluebg">
+    name1: <input type="text" name="qa">
+    <div name="qa"> div </div>
+    <div name="qa"> div </div>
+    <div name="qa"> div </div>
+
+    <script>
+       var qa = document.querySelectorAll('[name="qa"]');
+       var inputs = document.querySelectorAll('input[name="qa"]');
+
+       for(var i =0; i < qa.length; i++) {
+        qa[i].style.backgroundColor = "yellow";
+       }
+
+       for(var i =0; i < inputs.length; i++) {
+        inputs[i].style.backgroundColor = "green";
+       }
+    </script>
+       
+    </body>
+</html>
